@@ -13,6 +13,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="myuser_insert" parameterType="myuser">
 		insert into myuser values(seq_myuser_idx.nextVal, #{name}, #{id}, #{pwd}, #{email}, #{addr})
 	</insert>
+	
+	<!-- 수정 -->
+	<update id="myuser_update" parameterType="myuser">
+		update myuser set name=#{name}, id=#{id}, pwd=#{pwd}, email=#{email},addr=#{addr} where idx=#{idx}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="myuser_delete" parameterType="myuser">
+		delete from myuser WHERE idx =#{idx}
+	</delete>
 </mapper>
 
 

@@ -47,10 +47,38 @@ public class MyuserController {
 	@RequestMapping("/insert.do")
 	public String insert(Model model, MyuserVO vo) {
 
-		System.out.println(vo.getName());
+//		System.out.println(vo.getName());
+
 		// dao로 접근
 		int result = myuser_dao.insert(vo);
 		System.out.println(result);
+
+		return "redirect:list.do";
+	}
+
+	// 목록 수정하기 화면으로 가기
+	@RequestMapping("/modify.do")
+	public String modify() {
+		return VIEW_PATH + "myuser_modify.jsp";
+	}
+
+	// 목록 수정 후 데이터 베이스에서 목록 수정하기
+	@RequestMapping("/update.do")
+	// DAO에서 update 메서드 호출하여 사용자 정보 수정
+	public String update(MyuserVO vo) {
+		int result = myuser_dao.update(vo);
+
+		return "redirect:list.do";
+	}
+
+	// 목록 삭제
+	@RequestMapping("/delete.do")
+
+	public String delete(int idx) {
+		MyuserVO vo = new MyuserVO();
+		vo.setIdx(idx);
+
+		int result = myuser_dao.delete(vo);
 
 		return "redirect:list.do";
 

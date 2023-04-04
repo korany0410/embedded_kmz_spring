@@ -22,6 +22,7 @@ public class MyuserDAO {
 		return list;
 	}
 	
+	//목록을 추가
 	public int insert(MyuserVO vo) {
 		
 		int result = sqlSession.insert("m.myuser_insert", vo);
@@ -29,7 +30,20 @@ public class MyuserDAO {
 		return result;
 	}
 	
+	//목록을 수정하는 메서드
+	public int update(MyuserVO vo) {
+	    int result = sqlSession.update("m.myuser_update", vo);
+	    return result;
+	}
 	
+	//목록을 삭제
+	public int delete(MyuserVO vo) {
+		int result = sqlSession.delete("m.myuser_delete", vo);
+		return result;
+	}
+	
+	
+
 	
 	
 }

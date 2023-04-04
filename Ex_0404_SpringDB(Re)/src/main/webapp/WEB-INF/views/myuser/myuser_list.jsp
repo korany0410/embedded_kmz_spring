@@ -7,8 +7,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+	//목록 추가
 	function add(f) {
 		f.action = "add.do";
+		f.submit();
+	}
+	
+	//목록 수정
+	function modify(f) {
+		f.action = "modify.do";
+		f.submit();
+	}
+	
+	//목록 삭제
+	function delete(f) {
+		f.action = "delete.do";
 		f.submit();
 	}
 	
