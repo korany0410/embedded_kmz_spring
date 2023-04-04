@@ -1,0 +1,45 @@
+0404
+
+===============================================
+파라미터 처리하기
+
+---ParamController ---------------------------------------------------
+@Controller어노테이션 잊지말기
+@RequestMapping호출 받고 난 뒤의 메서드의 반환형은 String
+포워딩
+
+---insert_form.jsp-----------------------------------------------------
+1. 낱개로 전송한 파라미터 받는 법
+	1) jsp에서 function send1(f){
+		f.action = "insert.do"; <--여기로 
+		f.submit();  파라미터 보내기
+
+	2) Controller로 와서 파라미터를 받는다.
+	**이름을 일치시켜서 알아서 파라미터 받아서 처리하게 만들기!
+	- request.getParameter를 하지 않아도 파라미터가 자동으로 넘어온다
+	- int 타입의 경우 자동으로 형변환까지 처리해줌
+	- 파라미터를 vo로 묶어서 바인딩 후 jsp로 포워딩
+
+
+
+2) 객체로 전송한 파라미터 받는 법
+	1) jsp에서 묶어서 파라미터 보내기
+		function send2(f) {
+		f.action = "insert2.do";
+		f.submit();
+	
+	2) **파라미터가 VO변수의 이름과 정확하게 일치할 경우 
+	애초에 PersonVO타입으로 받을 수 있다!
+	- 낱개로 전송하는 방법과 달리 각각의 파라미터를 
+		다시 vo로 묶어 담아서 바인딩 하지 않아도 된다!
+	
+	public String insert2(Model model, PersonVO vo) {
+		
+		//이미 vo로 묶여있어서 바로 바인딩 작업 가능
+		model.addAttribute("vo", vo);
+		
+		//포워딩
+		return VIEW_PATH + "insert_result.jsp";
+		
+	}
+

@@ -1,0 +1,86 @@
+0404_Spring Database
+
+============================================
+
+db를 나눠서 관리를 하는게 효율적임
+src/main/resources 내부에 config.spring.context 패키지 만들기
+패키지 내에 root-context.xml를 붙여넣고 이름을 
+->  context-1-datasource.xml로 변경하기
+같은 파일 복사 해서
+-> context-2-mybatis.xml 이름 변경해서 붙여넣기
+-> context-2-dao.xml 이름 변경해서 붙여넣기
+
+
+두번째로 실행되는 root-context가 세개가 됨
+
+
+
+=========================
+config.spring.mvc패키지 만들기
+servlet-context.mvc옮기기
+
+
+	결과적인 실행순서
+	1. web.xml
+	2. context-1-datasource.xml
+	3. context-2-mybatis.xml
+	4. context-2-dao.xml 
+	5. servlet-context.xml
+
+=============================
+config.mybatis 패키지 만들고 mapper폴더에서 아래파일 붙여넣기
+	- db.properties 에서
+	-> (user=dbms_test  password=1111 로 변경)
+	- mybatis-config.xml
+
+================================
+config.mybatis.mapper 패키지 만들고 mapper폴더 내 
+	- dept.xml집어넣기
+	 -> <mapper namespace="d">
+	- mybatis-config.xml에서 
+	-> <typeAlias type="vo.BoardVo" alias="dept"/> 
+	-> <mapper resource="config/mybatis/mapper/dept.xml"/>
+
+================================
+https://mvnrepository.com/
+db와 관련된 라이브러리 다운받는 사이트
+다운받은 라이브러리를 pom.xml에 붙여넣어주면 사용가능하다.
+
+pom.xml : 라이브러리를 관리하는 파일
+	앞으로 계속 가지고 다닐 예정
+
+
+===============================
+라이브러리를 이용해 클래스를 만들기
+1. context-1-datasource.xml에서  db.properties(나의 db계정 정보)연결하기
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

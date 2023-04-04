@@ -1,0 +1,116 @@
+0403_Spring
+
+=============================================
+Ex_0331_SpringTest
+HomeController.java - 서블릿의 역할을 대체하게 됨
+	model 객체는 바인딩만을 목적으로 만들어진 클래스
+	바인딩-> model.setAttribute( "serverTime",  "formattedDate" );
+	포워딩 : home으로 가져가서 써 -> return "home";
+
+home.jsp 에서 el 표기법으로 ${serverTime}을 불러서 사용한다.
+
+
+Spring Legacy project에서 실행 시 아래 순서로 진행된다.
+(이 중 하나라도 오류가 있다면 실행 되지 않음!^-^)
+	1. web.xml
+	2. root-context.xml
+	3. servlet-context.xml
+	4. HomeController.java (servlet-context.xml에서 base-package를 통해 요청된)
+	5. home.jsp ( HomeController.java에서 포워딩 된)
+
+
+----------------------------------------
+흐름 이해하기!!!!!!!!!!
+1. 처음 web.xml 이 2, 3번을 모두 부른다
+2. root-context.xml 
+3. servlet-context.xml
+
+4. HomeController.java가 만들어지고 @RequestMapping을 입력함으로써 5jsp실행됨  
+
+------------------------------------------------------------
+
+src/main/java의 vo패키지에 PersonVO클래스를 만들었을때 주로 xml에서
+bean객체를 만들어준 뒤
+
+아래의 방법들로 값을 주입 할 수 있다. 
+	1) si ( setter injection) : setter를 통해 값을 넣어줌
+	2) ci ( constructor injection) : 오버로딩 생성자를 통해 값을 넣어줌
+		파라미터 순서대로 값을 넣어준다.
+
+
+=================================================
+Ex_0403_SpringDI
+값을 넣어주는 방법은 사실 하나 더 있음
+3) DI (dependency injection ) :의존성 주입
+	ServiceImp의 생성자 파라미터로 위에서 만들어둔 dao를 보내준다
+		
+		<---			<---
+Controller		ServiecImp		DAO
+Servicemp service;		boardDAOImp dao1;	BoardDAOImp
+service.dao.selectList();	MemberDAOImp dao2;	MemberDAOImp
+
+service.dao2.selectList();
+
+
+
+-------------------
+BoardController 클래스
+컨트롤러를 만드는 방법은 유일하게 servlet-context에서 만든다.
+
+어노테이션
+@controller
+
+
+=========================================
+Controller를 중심으로 Model과 View를 관리하며, 
+DispatcherServlet이 모든 요청을 받아 Controller에게 전달합니다.
+Controller는 요청을 처리하고, 
+Model을 업데이트한 후에 적절한 View를 선택하여 반환합니다. 
+=========================================
+Ex_0403_SpringMVC (MVC : Model-View-Controller)
+
+vo -> root-context에서 만들지 않음
+	
+서비스에서 dao를 참조
+컨트롤러에서 서비스를 참조 했었음
+
+서비스를 빼는 과정
+
+dao는 root-context에서 만든다 
+	->controller를 제외한 모든건 root-context에서!
+controller는 servlet-context에서 만든다
+	controller에서 root-context에서 지정한 dao이름을 가져다 쓴다
+
+생성자 인젝션으로 받기
+	
+dao를 통해서 controller를 호출하고 mapper에 들어갈 준비가끝남
+
+-----
+controller에서 전체목록을 조회하는 메서드 만들기 ( 컨트롤러가 서블릿의 역할을 대신함)
+@RequestMapping( value = {"/", "/list.do"}) 어노테이션 필수!!
+root-context 내부의 dao로 부터 검색결과 가져오기
+
+controller에서 바인딩 포워딩 -> jsp로 보냄
+jsp에서 controller에서 받아온 요소를 ${ }로 출력하기
+
+
+
+과정 요약----------------------------------------------
+web.xml실행이 되면서
+root-context 에서 dao , db 만들기
+그걸 컨트롤러에서 필요한거 가져다쓰기
+	dao => root에서
+	controller => servlet에서
+
+
+
+
+
+
+
+
+
+
+
+
+

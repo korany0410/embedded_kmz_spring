@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- PersonVO p1 = new PersonVO(); -->
+	<bean id="p1" class="vo.PersonVO">
+		<!-- 스프링 빈을 통해 PersonVO객체의 생성자를 호출 -->
+		
+		<!-- p1.setName("홍길동"); -->
+		<!-- p1객체의 setName을 통해 홍길동이라는 값을 넣어주는 구조 이므로
+			PersonVO에 setter&getter가 없으면 오류남!
+			
+			property : 속성  value:값-->
+		<property name="name" value="기본 생성자 김길동"/>
+		<property name="age" value="30"/>
+		<property name="tel" value="010-1111-1111"/>
+		<!-- 위와 같이 setter를 통해 값을 넣어주는 구조를 si(setter injection) 이라고 한다.  -->
+		
+	</bean>
+	
+	<!-- 오버로딩 생성자를 이용해서 값을 넣기 -->
+	<!--  PersonVO p1 = new PersonVO("오버로딩 생성자 박길동", 40, "010-2222-2222"); -->
+
+	<bean id="p2" class="vo.PersonVO">
+		<constructor-arg value="오버로딩 생성자 박길동"/>
+		<constructor-arg value="40"/>
+		<constructor-arg value="010-2222-2222"/>
+		<!-- 
+		위와같이 생성자를 통해 값을 넣어주는 구조를
+		ci(constructor injection) 이라고 한다.
+		constructor-arg를 사용해서 파라미터 순서대로 값을 넣어준다 -->
+		
+	</bean>
+	
+		
+</beans>

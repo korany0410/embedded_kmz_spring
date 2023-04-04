@@ -1,0 +1,80 @@
+0403_Spring
+
+HomeController.java - 서블릿의 역할을 대체하게 됨
+	model 객체는 바인딩만을 목적으로 만들어진 클래스
+	바인딩-> model.setAttribute( "serverTime",  "formattedDate" );
+	포워딩 : home으로 가져가서 써 -> return "home";
+
+home.jsp 에서 el 표기법으로 ${serverTime}을 불러서 사용한다.
+
+
+Spring Legacy project에서 실행 시 아래 순서로 진행된다.
+(이 중 하나라도 오류가 있다면 실행 되지 않음!^-^)
+	1. web.xml
+	2. root-context.xml
+	3. servlet-context.xml
+	4. HomeController.java (servlet-context.xml에서 base-package를 통해 요청된)
+	5. home.jsp ( HomeController.java에서 포워딩 된)
+
+
+----------------------------------------
+흐름 이해하기!!!!!!!!!!
+1. 처음 web.xml 이 2, 3번을 모두 부른다
+2. root-context.xml 
+3. servlet-context.xml
+
+4. HomeController.java가 만들어지고 @RequestMapping을 입력함으로써 5jsp실행됨  
+
+------------------------------------------------------------
+
+src/main/java의 vo패키지에 PersonVO클래스를 만들었을때 주로 xml에서
+bean객체를 만들어준 뒤
+
+아래의 방법들로 값을 주입 할 수 있다. 
+	1) si ( setter injection) : setter를 통해 값을 넣어줌
+	2) ci ( constructor injection) : 오버로딩 생성자를 통해 값을 넣어줌
+		파라미터 순서대로 값을 넣어준다.
+
+
+====================================
+값을 넣어주는 방법은 사실 하나 더 있음
+3) DI (dependency injection ) :의존성 주입
+	ServiceImp의 생성자 파라미터로 위에서 만들어둔 dao를 보내준다
+		
+		<---			<---
+Controller		ServiecImp		DAO
+Servicemp service;		boardDAOImp dao1;	BoardDAOImp
+service.dao.selectList();	MemberDAOImp dao2;	MemberDAOImp
+
+service.dao2.selectList();
+
+
+
+-------------------
+BoardController 클래스
+컨트롤러를 만드는 방법은 유일하게 servlet-context에서 만든다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
