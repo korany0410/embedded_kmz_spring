@@ -16,13 +16,26 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
 	<context:component-scan base-package="com.minzi.db" />
 	
-	
+	 -->
+	 
+	 
+	 <!--  컨트롤러 수동생성 및 dao를 생성자 주입으로 받는다-->
+	 <beans:bean class="com.minzi.db.MyuserController">
+	 	<beans:constructor-arg ref="myuser_dao"/>
+	 </beans:bean>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	
 </beans:beans>

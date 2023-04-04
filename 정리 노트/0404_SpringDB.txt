@@ -24,7 +24,7 @@ servlet-context.mvc옮기기
 	1. web.xml
 	2. context-1-datasource.xml
 	3. context-2-mybatis.xml
-	4. context-2-dao.xml 
+	4. context-3-dao.xml 
 	5. servlet-context.xml
 
 =============================
@@ -53,9 +53,18 @@ pom.xml : 라이브러리를 관리하는 파일
 ===============================
 라이브러리를 이용해 클래스를 만들기
 1. context-1-datasource.xml에서  db.properties(나의 db계정 정보)연결하기
+
+2. dao 만들기
+	*dao : sqlSession 가지고 mapper로 접근하는 일을 함
 	
-
-
+	dao는 context-3-dao.xml에서 bean으로 만들거기때문에
+	sqlsesison만 있으면 된다. 
+	
+3. controller 만들기
+@Controller
+	controller에서 dao정보를 받는다.
+4. servlet-context에서 서블릿 받기
+	
 
 
 

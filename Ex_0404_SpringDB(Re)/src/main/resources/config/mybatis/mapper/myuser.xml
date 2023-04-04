@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m">
+
+	<!-- 전체 조회 -->
+	<select id="myuser_list" resultType="myuser">
+		select * from myuser
+	</select>
+	
+	<!-- 추가 -->
+	<insert id="myuser_insert" parameterType="myuser">
+		insert into myuser values(seq_myuser_idx.nextVal, #{name}, #{id}, #{pwd}, #{email}, #{addr})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
