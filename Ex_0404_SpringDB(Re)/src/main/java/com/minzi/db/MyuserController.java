@@ -46,8 +46,7 @@ public class MyuserController {
 	// 데이터베이스에 목록 추가하기
 	@RequestMapping("/insert.do")
 	public String insert(Model model, MyuserVO vo) {
-
-//		System.out.println(vo.getName());
+		System.out.println(vo.getName());
 
 		// dao로 접근
 		int result = myuser_dao.insert(vo);

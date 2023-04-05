@@ -1,0 +1,33 @@
+--시퀀스 
+CREATE sequence seq_visit_idx;
+
+--테이블
+CREATE table VISIT(
+	idx NUMBER(3) primary key,
+	name VARCHAR2(50),
+	content VARCHAR2(1000),
+	pwd  VARCHAR2(50),
+	ip  VARCHAR2(20),
+	regdate DATE
+);
+
+--샘플 데이터 
+INSERT into VISIT values(
+	seq_visit_idx.nextVal,
+	'고라니',
+	'내용입니다',
+	'1111',
+	'192.1.1.1',
+	sysdate
+);
+
+INSERT into VISIT values(
+	seq_visit_idx.nextVal,
+	'호랑이',
+	'배고픕니다',
+	'1111',
+	'192.1.1.2',
+	sysdate
+);
+
+commit;

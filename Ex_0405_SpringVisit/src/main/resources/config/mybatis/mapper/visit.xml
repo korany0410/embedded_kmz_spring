@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="v">
+	
+	<!-- 방명록 전체 조회 메서드 -->
+	<select id="visit_list" resultType="visit">
+		select * from visit order by idx DESC
+	</select>
+	
+	<!-- 새 글 작성 메서드 -->
+	<insert id="visit_insert" parameterType="visit">
+		insert into VISIT values(
+			seq_visit_idx.nextVal,
+			#{name}, #{content},#{pwd},#{ip},sysdate
+		)
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
