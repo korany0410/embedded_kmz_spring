@@ -15,7 +15,7 @@ CREATE table VISIT(
 INSERT into VISIT values(
 	seq_visit_idx.nextVal,
 	'고라니',
-	'내용입니다',
+	'배고픕니다',
 	'1111',
 	'192.1.1.1',
 	sysdate
@@ -23,8 +23,8 @@ INSERT into VISIT values(
 
 INSERT into VISIT values(
 	seq_visit_idx.nextVal,
-	'호랑이',
-	'배고픕니다',
+	'파리상수',
+	'지각입니다',
 	'1111',
 	'192.1.1.2',
 	sysdate

@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.minzi</groupId>
 	<artifactId>db</artifactId>
-	<name>Ex_0404_SpringDB</name>
+	<name>Ex_0404_SpringDB(Re)</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>

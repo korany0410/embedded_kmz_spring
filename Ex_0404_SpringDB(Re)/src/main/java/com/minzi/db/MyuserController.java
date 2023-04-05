@@ -57,7 +57,9 @@ public class MyuserController {
 
 	// 목록 수정하기 화면으로 가기
 	@RequestMapping("/modify.do")
-	public String modify() {
+	public String modify(Model model, MyuserVO vo) {
+
+		model.addAttribute("vo",vo);
 		return VIEW_PATH + "myuser_modify.jsp";
 	}
 
@@ -65,8 +67,8 @@ public class MyuserController {
 	@RequestMapping("/update.do")
 	// DAO에서 update 메서드 호출하여 사용자 정보 수정
 	public String update(MyuserVO vo) {
+		
 		int result = myuser_dao.update(vo);
-
 		return "redirect:list.do";
 	}
 

@@ -41,7 +41,7 @@ public class PersonController {
 		model.addAttribute("list", list);
 		model.addAttribute("ip", ip);
 		
-		//requess로 바인딩 해도됨
+		//request로 바인딩 해도됨
 		//request.setAttribute("list", list);
 		
 		//포워딩

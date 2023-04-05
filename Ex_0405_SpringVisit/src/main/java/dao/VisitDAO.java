@@ -27,5 +27,29 @@ public class VisitDAO {
 		int res = sqlSession.insert("v.visit_insert",vo);
 		return res;
 	}
+
+	// 글 삭제
+	public int delete(int idx) {
+		int res = sqlSession.delete("v.visit_delete", idx);
+		return res;
+	}
+	
+	//글 수정
+	public int modify(VisitVO vo) {
+		int res = sqlSession.update("v.visit_modify", vo);
+		return res;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

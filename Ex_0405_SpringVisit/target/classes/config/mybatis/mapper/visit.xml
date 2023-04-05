@@ -17,6 +17,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
+	<!-- 글 삭제 -->
+	<delete id="visit_delete" parameterType="int">
+		delete from visit where idx = #{idx}
+	</delete>
+	
+	<!-- 글 수정 -->
+	<update id="visit_modify" parameterType="visit">
+		update visit set content=#{content}, regdate = sysdate
+		where idx=#{idx}
+	</update>
+	
 </mapper>
 
 
