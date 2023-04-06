@@ -60,6 +60,11 @@ BoardController 클래스
 어노테이션
 @controller
 
+@AutoWired : 자동 주입
+	spring으로부터 자동생성 가능한 객체를 new없이 알아서 생성해준다
+	HttpServletRequest request;
+==> servlet-context에서 설정을 추가해줘야함 
+	<context:annotation-config>
 
 =========================================
 Controller를 중심으로 Model과 View를 관리하며, 
@@ -101,8 +106,6 @@ root-context 에서 dao , db 만들기
 그걸 컨트롤러에서 필요한거 가져다쓰기
 	dao => root에서
 	controller => servlet에서
-
-
 
 
 

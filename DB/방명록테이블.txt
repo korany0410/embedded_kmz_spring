@@ -31,3 +31,8 @@ INSERT into VISIT values(
 );
 
 commit;
+
+
+--filename
+alter table visit add filename VARCHAR2(100);
+

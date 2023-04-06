@@ -64,6 +64,9 @@
 		}
 		//수정을 위한 url호출 ajax
 		f.action = "modify.do";
+		f.method = "post";
+		
+		//modify.do?idx=10&pwd=111&c_pwd=1111
 		f.submit();
 	}
 
@@ -103,18 +106,25 @@
 					<div id="type_input_content${ vo.idx }" style="display: none;">
 						<textarea placeholder="${ vo.content }" name="content" cols="50"
 							rows="5" style="width: 100%"></textarea>
+						<br>
 						<input type="button" value="취소" onclick="change(${vo.idx});" />
 					</div>
 					<div id="type_content${ vo.idx }" onclick="change(${vo.idx});"
 						style="min-height: 100px; /* 최소 높이 */ height: auto; display: block;">
 						<pre>${vo.content}</pre>
+						<!-- 첨부된 파일이 있는경우에만 img태그를 사용하겠습니다 -->
+						<c:if test="${vo.filename ne 'no_file'}">
+							<img alt="" src="/visit/resources/upload/${vo.filename }"
+								width="200" />
+						</c:if>
 					</div>
 					<div class="type_name">${vo.name}(${vo.ip})</div>
 					<div class="type_regdate">작성일 : ${vo.regdate}</div>
 
-					<input type="hidden" name="idx" value="${vo.idx}"> 
-					<input type="hidden" name="pwd" value="${vo.pwd}"> 
-					<input type="password" name="c_pwd" placeholder="비밀번호">
+					<input type="hidden" name="idx" value="${vo.idx}"> <input
+						type="hidden" name="pwd" value="${vo.pwd}"> <input
+						type="password" name="c_pwd" placeholder="비밀번호">
+
 					<!-- c_pwd:방금입력받은 비밀번호 -->
 
 					<input type="button" value="수정" onclick="modify(this.form)">
