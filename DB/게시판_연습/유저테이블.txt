@@ -1,0 +1,39 @@
+-- 유저테이블 -- 
+--시퀀스 
+CREATE sequence seq_user_idx;
+create table user (
+   idx number(4) primary key,
+   name varchar2(50),
+   pwd varchar2(100),
+   email varchar2(200),
+   addr varchar2(200),
+   created_at date
+);
+
+-- 게시판테이블 --
+CREATE sequence seq_board_idx;
+
+create table board (
+   idx number(7) primary key,
+   category varchar2(50),
+   title varchar2(100),
+   content varchar2(1000),
+   username varchar2(50),
+   created_at date,
+   view_count number(4),
+   rec_count number(4)
+);
+
+
+-- 댓글테이블 -- 
+CREATE sequence seq_table_idx;
+create table comment(
+   idx number(7) primary key,
+   username varchar2(50),
+   boardname varchar2(50),
+   like number(5),
+   dislike number(5),
+   created_at date
+   ref number(7), -- 원댓글
+   step number(4), -- 순서
+)
