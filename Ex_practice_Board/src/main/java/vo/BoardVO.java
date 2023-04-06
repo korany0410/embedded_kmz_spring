@@ -2,8 +2,18 @@ package vo;
 
 public class BoardVO {
 
-	private int idx, view_count, rec_count;
+	private int idx, view_count, rec_count, activate;
 	private String category, title, content, username, created_at;
+
+	
+
+	public int getActivate() {
+		return activate;
+	}
+
+	public void setActivate(int activate) {
+		this.activate = activate;
+	}
 
 	public int getIdx() {
 		return idx;

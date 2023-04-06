@@ -3,7 +3,7 @@ package vo;
 public class UserVO {
 	
 	private int idx;
-	private String name, pwd, email, addr, date;
+	private String name, pwd, email, addr, created_at;
 	
 	public int getIdx() {
 		return idx;
@@ -35,10 +35,11 @@ public class UserVO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public String getDate() {
-		return date;
+	public String getCreated_at() {
+		return created_at;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setCreated_at(String created_at) {
+		this.created_at = created_at;
 	}
+	
 }

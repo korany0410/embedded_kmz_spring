@@ -1,7 +1,8 @@
--- 유저테이블 -- 
---시퀀스 
-CREATE sequence seq_user_idx;
-create table user (
+-------테이블 생성------------------------------------------------------------
+
+-- 유저테이블 --  
+CREATE sequence seq_test_user_idx;
+create table test_user(
    idx number(4) primary key,
    name varchar2(50),
    pwd varchar2(100),
@@ -11,9 +12,9 @@ create table user (
 );
 
 -- 게시판테이블 --
-CREATE sequence seq_board_idx;
+CREATE sequence seq_test_board_idx;
 
-create table board (
+create table test_board (
    idx number(7) primary key,
    category varchar2(50),
    title varchar2(100),
@@ -21,19 +22,128 @@ create table board (
    username varchar2(50),
    created_at date,
    view_count number(4),
-   rec_count number(4)
+   rec_count number(4),
+activate number(3)--삭제여부
 );
-
+ALTER TABLE test_board ADD activate NUMBER(3);
+--삭제 여부 판단
 
 -- 댓글테이블 -- 
-CREATE sequence seq_table_idx;
-create table comment(
+CREATE sequence seq_test_table_idx;
+create table test_comment(
    idx number(7) primary key,
    username varchar2(50),
    boardname varchar2(50),
-   like number(5),
-   dislike number(5),
-   created_at date
-   ref number(7), -- 원댓글
-   step number(4), -- 순서
-)
+com_like number(5),
+dislike number(5), 
+created_at date, 
+ref number(7),  --원댓글
+step number(4),  --순서
+activate number(3) --삭제여부
+);
+ALTER TABLE test_comment ADD activate NUMBER(3);
+-------샘플데이터------------------------------------------------------------
+
+--유저테이블 샘플 데이터--
+
+INSERT into TEST_USER values(
+	seq_test_user_idx.nextVal,
+	'minzi',
+	'1111',
+	'kkmzxx@gmail.com',
+	'서울시 양천구',
+	sysdate
+);
+INSERT into TEST_USER values(
+	seq_test_user_idx.nextVal,
+	'nyang',
+	'1111',
+	'nyang_ego@gmail.com',
+	'서울시 양천구',
+	sysdate
+);
+INSERT into TEST_USER values(
+	seq_test_user_idx.nextVal,
+	'hyunjunny',
+	'1111',
+	'kingboltang2@gmail.com',
+	'서울시 중랑구',
+	sysdate
+);
+INSERT into TEST_USER values(
+	seq_test_user_idx.nextVal,
+	'sangsu',
+	'1111',
+	'parissangsu@gmail.com',
+	'서울시 서대문구',
+	sysdate
+);
+commit;
+
+
+
+
+--보드 샘플데이터--
+
+INSERT into TEST_BOARD values(
+	seq_test_board_idx.nextVal,
+	'free',
+	'다이어트 하는데 새벽에 배고플때 꿀팁',
+	'♥라면 200배 맛있게 끓이는 법♥ 
+	만드는법
+	1. 어묵 굵게 채썰기, 청양고추 어슷썰기
+	2. 냄비에 어묵, 황태채, 다시마, 물 650ml 넣고 끓이기
+	3. 끓기 시작하면 다시마 걷어내고, 건더기스프, 분말스프, 면, 다진마늘 넣고 3분간 끓이기
+	4. 청양고추 넣고 30초 더 끓이면 완성!',
+	'minzi',
+	sysdate,
+	0,
+	0
+);
+INSERT into TEST_BOARD values(
+	seq_test_board_idx.nextVal,
+	'free',
+	'운동안하고 근육생기는 방법',
+	'그런건 없습니다^-^ 당장 벤치프레스 앞으로 가세요ㅎㅎ',
+	'minzi',
+	sysdate,
+	0,
+	0
+);
+INSERT into TEST_BOARD values(
+	seq_test_board_idx.nextVal,
+	'free',
+	'앩옹',
+	'므오오옹꾸엉맹옹애옹우우에에에엥먕옹모우웅웅모웅레아아아야옹',
+	'nyang',
+	sysdate,
+	0,
+	0
+);
+commit;
+
+
+	
+
+
+
+--댓글테이블 샘플데이터--
+INSERT into TEST_USER values(
+	seq_test_comment_idx.nextVal,
+	'hyunjunny',
+	'1111',
+	'parissangsu@gmail.com',
+	'서울시 서대문구',
+	sysdate
+);
+commit;
+
+
+
+
+
+
+
+
+
+
