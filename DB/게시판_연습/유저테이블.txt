@@ -98,7 +98,8 @@ INSERT into TEST_BOARD values(
 	'minzi',
 	sysdate,
 	0,
-	0
+	0,
+	1
 );
 INSERT into TEST_BOARD values(
 	seq_test_board_idx.nextVal,
@@ -108,7 +109,8 @@ INSERT into TEST_BOARD values(
 	'minzi',
 	sysdate,
 	0,
-	0
+	0,
+	1
 );
 INSERT into TEST_BOARD values(
 	seq_test_board_idx.nextVal,
@@ -118,7 +120,8 @@ INSERT into TEST_BOARD values(
 	'nyang',
 	sysdate,
 	0,
-	0
+	0,
+	1
 );
 commit;
 

@@ -1,0 +1,26 @@
+autodetecting  : servlet-context에서만 가능
+	<!-- AutoDetecting(자동생성) -->
+	 <context:component-scan base-package="dao, service, controller"></context:component-scan>
+
+
+
+auto-wired
+
+@Repository //데이터 관리 어노테이션
+
+//@Component의 자식 클래스를 어노테이션으로 가지고있는 경우 
+//servlet-context에서 auto-detecting (자동 생성이 가능해진다
+	//@Component
+//		ㄴ@Controller --> TestController
+//		ㄴ@Repository -->DeptDAO
+//		ㄴ@Service -->TotalService	
+
+controller <-- service --> dao
+
+@Service :
+	@Autowired
+	 DeptDAO dept_dao;
+	//DeptDAO에서의 @Repository("dept_dao") 의 별칭과 이름을 똑같이 지어준다!!!!
+
+
+TestController
