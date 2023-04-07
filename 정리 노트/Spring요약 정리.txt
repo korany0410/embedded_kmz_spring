@@ -1,0 +1,6 @@
+Spring Legacy project의 진행 순서
+	1. web.xml
+	2. root_context.xml
+	3. servlet-context.xml
+	4. Controller ( servlet-context에서 요청된)
+	5. .jsp
